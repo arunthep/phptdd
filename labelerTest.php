@@ -29,12 +29,42 @@ class labelerTest extends PHPUnit_Framework_TestCase{
 		$this->assertEquals($actualResult, $expectedResult);		
 	}
 
-
 	function testMockFiveShouldReturnBuzz(){
 		$this->labeler->setNumber(5);
 		$actualResult = $this->labeler->getLabel();
 		$expectedResult = 'Buzz';
 		$this->assertEquals($actualResult, $expectedResult);		
 	}
+	
+	function testMockOneShouldReturnNewDrawMessage(){
+		$this->labeler->setNumber(1);
+		$actualResult = $this->labeler->getLabel();
+		$expectedResult = 'New Draw';
+		$this->assertEquals($actualResult, $expectedResult);		
+	}
+	function testMockEightShouldReturnNewDrawMessage(){
+		$this->labeler->setNumber(8);
+		$actualResult = $this->labeler->getLabel();
+		$expectedResult = 'New Draw';
+		$this->assertEquals($actualResult, $expectedResult);		
+	}
+
+	function testGetRandomerToShowFizzBuzz() {
+                $expectedResult = array (
+			1 => 'New Draw',
+			2 => 'New Draw',
+			3 => 'Fizz',
+			4 => 'New Draw',
+			5 => 'Buzz',
+			6 => 'Fizz',
+			7 => 'New Draw',
+			8 => 'New Draw',
+			9 => 'Fizz'
+		);
+		$randomResult = $this->randomer->getNumber();
+		$this->labeler->setNumber($randomResult);
+		$actualResult = $this->labeler->getLabel();
+		$this->assertEquals($actualResult, $expectedResult[$randomResult]);		
+        }
 }
 ?>
