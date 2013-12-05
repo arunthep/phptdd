@@ -74,9 +74,9 @@ class WineDAOPDO{
             $sql = "select * from wines";
             $local_dbh = $this->getConnection();
             $stmt = $local_dbh->query($sql);
-            $wines = $stmt->fetchAll(PDO::FETCH_OBJ);
+            $wines = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $local_dbh = null;
-            //print_r($wines);
+            print_r($wines);
             return $wines;
         } catch (PDOException $e) {
             echo $e->getMessage();
